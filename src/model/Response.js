@@ -17,7 +17,7 @@ class Response {
   }
 
   static parse(obj, statusCode) {
-    if (obj.name === 'Response') {
+    if (obj instanceof Response) {
       return obj;
     }
     if (obj.name === 'GenericError') {
