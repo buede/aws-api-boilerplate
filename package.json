@@ -16,7 +16,7 @@
     "remove-prod": "serverless remove --stage prod"
   },
   "bin": {
-    "create-aws-api": "index.js"
+    "create-aws-api": "create-project.js"
   },
   "repository": {
     "type": "git",

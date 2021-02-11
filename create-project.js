@@ -55,7 +55,7 @@ function copyTemplate(params) {
   return ensureDir(newDir)
     .then(() =>
       Promise.all([
-        copy(`${__dirname}`, `${newDir}`, { filter }).then(() => {
+        copy(__dirname, newDir, { filter }).then(() => {
           console.log('...resources copied');
         }),
         writeJson(`${newDir}/package.json`, formatPackageJson(params)).then(() => {
