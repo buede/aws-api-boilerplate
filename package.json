@@ -1,5 +1,5 @@
 {
-  "name": "aws-api-boleirplate",
+  "name": "create-aws-api",
   "version": "0.0.1",
   "description": "Boilerplate for deploying a REST API in AWS using node.js",
   "engines": {
