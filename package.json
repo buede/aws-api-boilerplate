@@ -1,5 +1,5 @@
 {
-  "name": "create-aws-api",
+  "name": "aws-api-boilerplate",
   "version": "0.0.1",
   "description": "Boilerplate for deploying a REST API in AWS using node.js",
   "engines": {
@@ -15,9 +15,6 @@
     "remove-test": "serverless remove --stage test",
     "remove-prod": "serverless remove --stage prod"
   },
-  "bin": {
-    "create-aws-api": "create-project.js"
-  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/buede/aws-api-boleirplate.git"
@@ -29,9 +26,7 @@
   },
   "homepage": "https://github.com/buede/aws-api-boleirplate#readme",
   "dependencies": {
-    "aws-sdk": "^2.821.0",
-    "fs-extra": "^9.1.0",
-    "inquirer": "^7.3.3"
+    "aws-sdk": "^2.821.0"
   },
   "devDependencies": {
     "@babel/core": "^7.12.10",
