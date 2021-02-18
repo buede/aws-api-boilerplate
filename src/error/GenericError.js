@@ -5,9 +5,9 @@ class GenericError extends Error {
     this.name = this.constructor.name;
     // HTTP response part
     this.statusCode = statusCode;
-    this.body = JSON.stringify({
+    this.body = {
       errorMessage: message,
-    });
+    };
   }
 
   static parse(error) {
