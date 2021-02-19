@@ -16,13 +16,15 @@ function sendProxyError(err) {
 }
 
 function processRequest(event, resourceMap) {
+  console.time('handler');
+  const { httpMethod, resource: eventResource, requestContext = {} } = event;
+  const { identity = {} } = requestContext;
+  const { sourceIp = 'unknown', userAgent = 'unknown' } = identity;
   return new Promise((resolve, reject) => {
-    if (event.httpMethod && event.resource) {
-      const { resource: eventResource, httpMethod } = event;
+    if (httpMethod && eventResource) {
       const resourceWithoutStage = eventResource.startsWith(`/${ENV}`)
         ? eventResource.slice(ENV.length + 1)
         : eventResource;
-      console.debug('PROCESSING HTTP EVENT', httpMethod, eventResource, resourceWithoutStage);
       const resource = resourceMap[resourceWithoutStage];
       const resourceMethod = resource && resource[httpMethod];
       if (!resourceMethod) reject(new Error404('Route Not Found'));
@@ -37,7 +39,14 @@ function processRequest(event, resourceMap) {
       console.log('UNKNOWN EVENT', event);
       resolve({});
     }
-  }).then(sendProxySuccess.bind(), sendProxyError.bind());
+  })
+    .then(sendProxySuccess.bind(), sendProxyError.bind())
+    .then((response) => {
+      const { statusCode = 0 } = response;
+      console.log(`${sourceIp} (${userAgent}) - ${httpMethod} ${eventResource} [${statusCode}]`);
+      console.timeEnd('handler');
+      return response;
+    });
 }
 
 module.exports = processRequest;
