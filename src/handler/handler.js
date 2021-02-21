@@ -17,9 +17,11 @@ function sendProxyError(err) {
 
 function processRequest(event, resourceMap) {
   console.time('handler');
-  const { httpMethod, resource: eventResource, requestContext = {} } = event;
-  const { identity = {} } = requestContext;
-  const { sourceIp = 'unknown', userAgent = 'unknown' } = identity;
+  const {
+    httpMethod,
+    resource: eventResource,
+    requestContext: { identity: { sourceIp = 'unknown', userAgent = 'unknown' } = {} } = {},
+  } = event;
   return new Promise((resolve, reject) => {
     if (httpMethod && eventResource) {
       const resourceWithoutStage = eventResource.startsWith(`/${ENV}`)
