@@ -6,7 +6,7 @@
     "node": ">=12"
   },
   "scripts": {
-    "test": "mocha",
+    "test": "nyc mocha",
     "start": "serverless offline start --stage=local",
     "deploy-dev": "serverless deploy --stage dev",
     "deploy-test": "serverless deploy --stage test",
@@ -38,6 +38,7 @@
     "eslint-plugin-import": "^2.22.1",
     "eslint-plugin-prettier": "^3.3.1",
     "mocha": "^8.2.1",
+    "nyc": "^15.1.0",
     "prettier": "^2.2.1",
     "serverless": "^2.17.0",
     "serverless-offline": "^6.8.0",
