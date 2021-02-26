@@ -1,4 +1,4 @@
-const processRequest = require('./handler');
+const { processRequest } = require('./handler');
 
 // Map your functions to http events here
 const RESOURCE_MAP = {

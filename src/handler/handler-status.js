@@ -1,4 +1,4 @@
-const processRequest = require('./handler');
+const { processRequest } = require('./handler');
 
 const PROJECT = process.env.SERVERLESS_PROJECT;
 const STAGE = process.env.SERVERLESS_STAGE;

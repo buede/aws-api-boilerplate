@@ -18,7 +18,7 @@ Based on [serverless-es6-boilerplate](https://github.com/artoliukkonen/serverles
 
 ## Adding endpoints
 1. Create a new handler file (like `handler-user.js`)
-2. Import the module `handler.js` (it exports the function `processRequest` as default)
+2. Import the function `processRequest` from the module `handler.js`
 3. Create a resource map object using the format:
    ```
    const RESOURCE_MAP = {
@@ -27,7 +27,7 @@ Based on [serverless-es6-boilerplate](https://github.com/artoliukkonen/serverles
      },
    }
    ```
-4. Export a default request function that takes an `event` object as parameter and returns the execution of the function `processRequest` that was imported from the module `handler.js`, passing the `event` object and the resource map as parameters like in the example below:
+4. Export a default request function that takes an `event` object as parameter and returns the execution of the function `processRequest` (imported from the module `handler.js`), passing the `event` object and the resource map as parameters like in the example below:
    ```
    exports.request = async (event) => processRequest(event, RESOURCE_MAP);
    ```
