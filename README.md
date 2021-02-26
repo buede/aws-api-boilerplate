@@ -1,5 +1,6 @@
 # aws-api-boilerplate
 [![Build Status](https://travis-ci.com/buede/aws-api-boilerplate.svg?branch=master)](https://travis-ci.com/buede/aws-api-boilerplate)
+[![codecov](https://codecov.io/gh/buede/aws-api-boilerplate/branch/master/graph/badge.svg?token=MS2RV48S07)](https://codecov.io/gh/buede/aws-api-boilerplate)
 
 Boilerplate for deploying a REST API in AWS using node.js and serverless framework.
 
