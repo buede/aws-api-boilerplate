@@ -7,6 +7,7 @@
   },
   "scripts": {
     "test": "nyc mocha",
+    "report-coverage": "nyc --reporter=lcov mocha && codecov",
     "lint": "eslint .",
     "start": "serverless offline start --stage=local",
     "deploy-dev": "serverless deploy --stage dev",
