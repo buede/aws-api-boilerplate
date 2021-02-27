@@ -25,7 +25,7 @@ function getResourceMethod(eventResource, httpMethod, resourceMap = {}) {
   const {
     [resourceWithoutStage]: {
       [httpMethod]: resourceMethod = () => {
-        throw new Error404('Route Not Found');
+        throw new Error404('Route not found');
       },
     } = {},
   } = resourceMap;

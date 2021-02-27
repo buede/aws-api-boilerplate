@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-expressions */
 const { expect } = require('chai');
 const { sendProxySuccess, sendProxyError, getResourceMethod } = require('../src/handler/handler');
 const Response = require('../src/model/Response');
@@ -9,7 +10,6 @@ describe('Handler test', () => {
       const okResponse = sendProxySuccess(new Response());
       const { statusCode, body } = okResponse;
       expect(statusCode).to.equal(200);
-      // eslint-disable-next-line no-unused-expressions
       expect(body).to.be.null;
     });
     it('200 response with text body', () => {
@@ -37,7 +37,6 @@ describe('Handler test', () => {
       const okResponse = sendProxySuccess(new Response(null, 204));
       const { statusCode, body } = okResponse;
       expect(statusCode).to.equal(204);
-      // eslint-disable-next-line no-unused-expressions
       expect(body).to.be.null;
     });
   });
@@ -67,6 +66,33 @@ describe('Handler test', () => {
       const resourceMap = { '/test': { GET: resourceMethod } };
 
       expect(getResourceMethod('/test', 'GET', resourceMap)()).to.equal('tested');
+    });
+
+    it('Route not found', (done) => {
+      const resourceMethod = () => 'tested';
+      const resourceMap = { '/test': { GET: resourceMethod } };
+
+      try {
+        getResourceMethod('/testing', 'GET', resourceMap)();
+        done(new Error());
+      } catch (error) {
+        const { statusCode, message } = error;
+        expect(statusCode).to.equal(404);
+        expect(message).to.equal('Route not found');
+        done();
+      }
+    });
+
+    it('Route not found with missing resource map', (done) => {
+      try {
+        getResourceMethod('/testing', 'GET')();
+        done(new Error());
+      } catch (error) {
+        const { statusCode, message } = error;
+        expect(statusCode).to.equal(404);
+        expect(message).to.equal('Route not found');
+        done();
+      }
     });
 
     it('Unknown event resource', (done) => {
