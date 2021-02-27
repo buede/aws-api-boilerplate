@@ -1,3 +1,4 @@
+const Error400 = require('../error/Error400');
 const Error404 = require('../error/Error404');
 const GenericError = require('../error/GenericError');
 const Response = require('../model/Response');
@@ -14,6 +15,9 @@ function sendProxyError(err) {
 }
 
 function getResourceMethod(eventResource, httpMethod, resourceMap = {}) {
+  if (!eventResource) throw new Error400('Unknown event resource');
+  if (!httpMethod) throw new Error400('Unknown HTTP method');
+
   const env = process.env.SERVERLESS_STAGE || 'dev';
   const resourceWithoutStage = eventResource.startsWith(`/${env}`)
     ? eventResource.slice(env.length + 1)
@@ -36,16 +40,11 @@ function processRequest(event, resourceMap) {
     requestContext: { identity: { sourceIp = 'unknown', userAgent = 'unknown' } = {} } = {},
   } = event;
   return new Promise((resolve, reject) => {
-    if (httpMethod && eventResource) {
-      const resourceMethod = getResourceMethod(eventResource, httpMethod, resourceMap);
-      try {
-        resolve(resourceMethod(event));
-      } catch (error) {
-        reject(error);
-      }
-    } else {
-      console.log('UNKNOWN EVENT', event);
-      resolve({});
+    const resourceMethod = getResourceMethod(eventResource, httpMethod, resourceMap);
+    try {
+      resolve(resourceMethod(event));
+    } catch (error) {
+      reject(error);
     }
   })
     .then(sendProxySuccess.bind(), sendProxyError.bind())

@@ -1,5 +1,5 @@
 class Response {
-  constructor(body = {}, statusCode = 200) {
+  constructor(body, statusCode = 200) {
     this.statusCode = statusCode;
     this.body = body;
     this.headers = {
