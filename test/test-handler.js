@@ -17,7 +17,7 @@ describe('Handler test', () => {
       const okResponse = sendProxySuccess(responseObj);
       const { statusCode, body } = okResponse;
       expect(statusCode).to.equal(200);
-      expect(body).to.equal(JSON.stringify(responseObj));
+      expect(body).to.equal(responseObj);
     });
     it('200 response with object body', () => {
       const responseObj = { message: 'test message' };

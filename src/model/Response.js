@@ -11,7 +11,9 @@ class Response {
   getResponse() {
     return {
       statusCode: this.statusCode,
-      body: this.body ? JSON.stringify(this.body) : null,
+      body: this.body
+        ? (typeof this.body === 'object' && JSON.stringify(this.body)) || this.body
+        : null,
       headers: this.headers,
     };
   }
