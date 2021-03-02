@@ -4,8 +4,9 @@ const GenericError = require('../error/GenericError');
 const Response = require('../model/Response');
 
 function sendProxySuccess(responseObj) {
-  console.debug(`Response: ${JSON.stringify(responseObj)}`);
-  return Response.parse(responseObj).getResponse();
+  const response = Response.parse(responseObj).getResponse();
+  console.debug(`Response: ${JSON.stringify(response)}`);
+  return response;
 }
 
 function sendProxyError(err) {
