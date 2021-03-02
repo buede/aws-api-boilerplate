@@ -1,0 +1,33 @@
+{
+  "body": "{\"action\":\"sendMessage\",\"message\":\"hi\"}",
+  "isBase64Encoded": false,
+  "requestContext": {
+    "apiId": "private",
+    "connectedAt": 1614718866412,
+    "connectionId": "cklshx78r00000jkvda0z88mn",
+    "domainName": "localhost",
+    "eventType": "MESSAGE",
+    "extendedRequestId": "cklshzdu1000j0jkv4e9pfc5x",
+    "identity": {
+      "accessKey": null,
+      "accountId": null,
+      "caller": null,
+      "cognitoAuthenticationProvider": null,
+      "cognitoAuthenticationType": null,
+      "cognitoIdentityId": null,
+      "cognitoIdentityPoolId": null,
+      "principalOrgId": null,
+      "sourceIp": "127.0.0.1",
+      "user": null,
+      "userAgent": null,
+      "userArn": null
+    },
+    "messageDirection": "IN",
+    "messageId": "cklshzdu1000k0jkv5qh28l7v",
+    "requestId": "cklshzdu1000l0jkv5dt5dn3k",
+    "requestTime": "02/Mar/2021:23:02:48 +0200",
+    "requestTimeEpoch": 1614718968265,
+    "routeKey": "sendMessage",
+    "stage": "local"
+  }
+}

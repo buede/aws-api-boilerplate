@@ -24,6 +24,8 @@ provider:
   region: ${opt:region, 'eu-west-1'}
   tracing:
     lambda: true
+  websocketsApiName: custom-websockets-api-name
+  websocketsApiRouteSelectionExpression: $request.body.action # custom routes are selected by the value of the action property in the body
 
   # you can add statements to the Lambda function's IAM Role here
   #  iamRoleStatements:
@@ -58,6 +60,12 @@ functions:
       - http:
           path: hello
           method: any
+      - websocket:
+          route: $connect
+      - websocket:
+          route: $disconnect
+      - websocket:
+          route: sendMessage
   status:
     handler: src/handler/handler-status.request
     memorySize: 128

@@ -1,0 +1,34 @@
+{
+  "headers": { "Host": "localhost", "x-api-key": "", "x-restapi": "" },
+  "isBase64Encoded": false,
+  "multiValueHeaders": { "Host": ["localhost"], "x-api-key": [""], "x-restapi": [""] },
+  "requestContext": {
+    "apiId": "private",
+    "connectedAt": 1614724701224,
+    "connectionId": "cklsle9ev0000z3kv71c61j17",
+    "domainName": "localhost",
+    "eventType": "DISCONNECT",
+    "extendedRequestId": "cklslebr80005z3kvh2w6g2te",
+    "identity": {
+      "accessKey": null,
+      "accountId": null,
+      "caller": null,
+      "cognitoAuthenticationProvider": null,
+      "cognitoAuthenticationType": null,
+      "cognitoIdentityId": null,
+      "cognitoIdentityPoolId": null,
+      "principalOrgId": null,
+      "sourceIp": "127.0.0.1",
+      "user": null,
+      "userAgent": null,
+      "userArn": null
+    },
+    "messageDirection": "IN",
+    "messageId": "cklslebr80006z3kv0su73lrg",
+    "requestId": "cklslebr80007z3kv0itu3oz3",
+    "requestTime": "03/Mar/2021:00:38:24 +0200",
+    "requestTimeEpoch": 1614724704260,
+    "routeKey": "$disconnect",
+    "stage": "local"
+  }
+}

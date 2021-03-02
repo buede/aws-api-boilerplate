@@ -1,0 +1,48 @@
+{
+  "headers": {
+    "Sec-WebSocket-Version": "13",
+    "Sec-WebSocket-Key": "KsKgffrU7e9OfxNLlzKYdw==",
+    "Connection": "Upgrade",
+    "Upgrade": "websocket",
+    "Sec-WebSocket-Extensions": "permessage-deflate; client_max_window_bits",
+    "Host": "localhost:3001"
+  },
+  "isBase64Encoded": false,
+  "multiValueHeaders": {
+    "Sec-WebSocket-Version": ["13"],
+    "Sec-WebSocket-Key": ["KsKgffrU7e9OfxNLlzKYdw=="],
+    "Connection": ["Upgrade"],
+    "Upgrade": ["websocket"],
+    "Sec-WebSocket-Extensions": ["permessage-deflate; client_max_window_bits"],
+    "Host": ["localhost:3001"]
+  },
+  "requestContext": {
+    "apiId": "private",
+    "connectedAt": 1614717450076,
+    "connectionId": "cklsh2ue30000lhkvb9ai3bgb",
+    "domainName": "localhost",
+    "eventType": "CONNECT",
+    "extendedRequestId": "cklsh2ue40001lhkvclpe4tyg",
+    "identity": {
+      "accessKey": null,
+      "accountId": null,
+      "caller": null,
+      "cognitoAuthenticationProvider": null,
+      "cognitoAuthenticationType": null,
+      "cognitoIdentityId": null,
+      "cognitoIdentityPoolId": null,
+      "principalOrgId": null,
+      "sourceIp": "127.0.0.1",
+      "user": null,
+      "userAgent": null,
+      "userArn": null
+    },
+    "messageDirection": "IN",
+    "messageId": "cklsh2ue40002lhkvcgshdsb3",
+    "requestId": "cklsh2ue40003lhkvff76en03",
+    "requestTime": "02/Mar/2021:22:37:30 +0200",
+    "requestTimeEpoch": 1614717450076,
+    "routeKey": "$connect",
+    "stage": "local"
+  }
+}
