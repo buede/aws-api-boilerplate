@@ -32,15 +32,29 @@ function getResourceMethod(eventResource, httpMethod, resourceMap = {}) {
   return resourceMethod;
 }
 
-function processRequest(event, resourceMap) {
-  console.time('handler');
+function getEventData(event) {
   const {
     httpMethod,
-    resource: eventResource,
-    requestContext: { identity: { sourceIp = 'unknown', userAgent = 'unknown' } = {} } = {},
+    resource,
+    requestContext: {
+      identity: { sourceIp = 'unknown', userAgent = 'unknown' } = {},
+      routeKey,
+    } = {},
   } = event;
+
+  return {
+    eventResource: resource || 'WebSocket',
+    eventAction: httpMethod || routeKey,
+    sourceIp,
+    userAgent,
+  };
+}
+
+function processRequest(event, resourceMap) {
+  console.time('handler');
+  const { eventResource, eventAction, sourceIp, userAgent } = getEventData(event);
   return new Promise((resolve, reject) => {
-    const resourceMethod = getResourceMethod(eventResource, httpMethod, resourceMap);
+    const resourceMethod = getResourceMethod(eventResource, eventAction, resourceMap);
     try {
       resolve(resourceMethod(event));
     } catch (error) {
@@ -50,10 +64,16 @@ function processRequest(event, resourceMap) {
     .then(sendProxySuccess.bind(), sendProxyError.bind())
     .then((response) => {
       const { statusCode = 0 } = response;
-      console.log(`${sourceIp} (${userAgent}) - ${httpMethod} ${eventResource} [${statusCode}]`);
+      console.log(`${sourceIp} (${userAgent}) - ${eventAction} ${eventResource} [${statusCode}]`);
       console.timeEnd('handler');
       return response;
     });
 }
 
-module.exports = { sendProxySuccess, sendProxyError, getResourceMethod, processRequest };
+module.exports = {
+  sendProxySuccess,
+  sendProxyError,
+  getResourceMethod,
+  getEventData,
+  processRequest,
+};
