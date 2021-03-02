@@ -1,5 +1,5 @@
 class Response {
-  constructor(body, statusCode = 200) {
+  constructor(body = null, statusCode = 200) {
     this.statusCode = statusCode;
     this.body = body;
     this.headers = {
@@ -22,8 +22,9 @@ class Response {
     if (obj instanceof Response) {
       return obj;
     }
-    if (obj.name === 'GenericError') {
-      return new Response(obj.body, obj.statusCode);
+    const { name = 'undefined', body: objBody, statusCode: objStatusCode } = obj || {};
+    if (name === 'GenericError') {
+      return new Response(objBody, objStatusCode);
     }
     return new Response(obj, statusCode);
   }
