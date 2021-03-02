@@ -32,6 +32,7 @@
   },
   "devDependencies": {
     "@babel/core": "^7.12.10",
+    "aws-sdk-mock": "^5.1.0",
     "babel-loader": "^8.2.2",
     "chai": "^4.2.0",
     "eslint": "^7.17.0",
