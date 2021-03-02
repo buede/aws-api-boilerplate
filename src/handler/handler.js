@@ -18,8 +18,12 @@ function getResourceMethod(eventResource, httpMethod, resourceMap = {}) {
   if (!eventResource) throw new Error400('Unknown event resource');
   if (!httpMethod) throw new Error400('Unknown HTTP method');
 
+  const env = process.env.SERVERLESS_STAGE || 'dev';
+  const resourceWithoutStage = eventResource.startsWith(`/${env}`)
+    ? eventResource.slice(env.length + 1)
+    : eventResource;
   const {
-    [eventResource]: {
+    [resourceWithoutStage]: {
       [httpMethod]: resourceMethod = () => {
         throw new Error404('Route not found');
       },
@@ -32,7 +36,7 @@ function processRequest(event, resourceMap) {
   console.time('handler');
   const {
     httpMethod,
-    path: eventResource,
+    resource: eventResource,
     requestContext: { identity: { sourceIp = 'unknown', userAgent = 'unknown' } = {} } = {},
   } = event;
   return new Promise((resolve, reject) => {
