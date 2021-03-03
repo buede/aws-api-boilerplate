@@ -27,7 +27,4 @@ const RESOURCE_MAP = {
   },
 };
 
-exports.request = async (event) => {
-  console.log(JSON.stringify(event));
-  return processRequest(event, RESOURCE_MAP);
-};
+exports.request = async (event) => processRequest(event, RESOURCE_MAP);
